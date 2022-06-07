@@ -26,11 +26,11 @@ def countNode(update, context):
         else:
             tag = reply_to.from_user.mention_html(reply_to.from_user.first_name)
     if is_gdrive_link(link):
-        msg = sendMessage(f"Counting: <code>{link}</code>", context.bot, update.message)
+        msg = sendMessage(f"😉𝐂𝐎𝐔𝐍𝐓𝐈𝐍𝐆 →<code>{link}</code>", context.bot, update.message)
         gd = GoogleDriveHelper()
         result = gd.count(link)
         deleteMessage(context.bot, msg)
-        cc = f'\n\n<b>cc: </b>{tag}'
+        cc = f'\n\n<b>🤴𝐑𝐄𝐐𝐔𝐄𝐒𝐓𝐄𝐃 →</b>{tag}'
         sendMessage(result + cc, context.bot, update.message)
     else:
         sendMessage('Send Gdrive link along with command or by replying to the link by command', context.bot, update.message)
