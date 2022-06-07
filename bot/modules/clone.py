@@ -38,7 +38,7 @@ def _clone(message, bot, multi=0):
     is_gdtot = is_gdtot_link(link)
     if is_gdtot:
         try:
-            msg = sendMessage(f"Processing: <code>{link}</code>", bot, message)
+            msg = sendMessage(f"𝐏𝐑𝐎𝐂𝐄𝐒𝐒𝐈𝐍𝐆 →<code>{link}</code>", bot, message)
             link = gdtot(link)
             deleteMessage(bot, msg)
         except DirectDownloadLinkException as e:
@@ -69,7 +69,7 @@ def _clone(message, bot, multi=0):
             sleep(4)
             Thread(target=_clone, args=(nextmsg, bot, multi)).start()
         if files <= 20:
-            msg = sendMessage(f"Cloning: <code>{link}</code>", bot, message)
+            msg = sendMessage(f"𝐂𝐋𝐎𝐍𝐈𝐍𝐆 →<code>{link}</code>", bot, message)
             result, button = gd.clone(link)
             deleteMessage(bot, msg)
         else:
@@ -92,12 +92,12 @@ def _clone(message, bot, multi=0):
                     update_all_messages()
             except IndexError:
                 pass
-        cc = f'\n\n<b>cc: </b>{tag}'
+        cc = f'\n\n<b>𝐑𝐄𝐐𝐔𝐄𝐒𝐓𝐄𝐃 →</b>{tag}'
         if button in ["cancelled", ""]:
             sendMessage(f"{tag} {result}", bot, message)
         else:
             sendMarkup(result + cc, bot, message, button)
-            LOGGER.info(f'Cloning Done: {name}')
+            LOGGER.info(f'𝐂𝐋𝐎𝐍𝐈𝐍𝐆 𝐃𝐎𝐍𝐄 →{name}')
         if is_gdtot:
             gd.deletefile(link)
     else:
