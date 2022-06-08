@@ -45,21 +45,22 @@ def stats(update, context):
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
     stats = f'<b>╭──「⭕️ BOT STATISTICS ⭕️」</b>'         
-            f'<b>├⌬ 𝐔𝐏𝐓𝐈𝐌𝐄→</b> {currentTime}\n'\
-            f'<b>├⌬ 𝐎𝐒 𝐔𝐏𝐓𝐈𝐌𝐄→</b> {osUptime}\n\n'\
-            f'<b>├⌬ 𝐃𝐈𝐒𝐊 𝐒𝐏𝐀𝐂𝐄→</b> {total}\n'\
-            f'<b>├⌬ 𝐔𝐒𝐄𝐃→</b> {used} | <b>𝐅𝐑𝐄𝐄→</b> {free}\n\n'\
-            f'<b>├⌬ 𝐔𝐏𝐋𝐎𝐀𝐃→</b> {sent}\n'\
-            f'<b>├⌬ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃→</b> {recv}\n\n'\
-            f'<b>├⌬ 𝐂𝐏𝐔→</b> {cpuUsage}%\n'\
-            f'<b>├⌬ 𝐑𝐀𝐌→</b> {mem_p}%\n'\
-            f'<b>├⌬ 𝐃𝐈𝐒𝐊→</b> {disk}%\n\n'\
-            f'<b>├⌬ 𝐏𝐇𝐘𝐒𝐈𝐂𝐀𝐋 𝐂𝐎𝐑𝐄𝐒→</b> {p_core}\n'\
-            f'<b>├⌬ 𝐓𝐎𝐓𝐀𝐋 𝐂𝐎𝐑𝐄𝐒→</b> {t_core}\n\n'\
-            f'<b>├⌬ 𝐒𝐖𝐀𝐏→</b> {swap_t} | <b>𝐔𝐒𝐄𝐃→</b> {swap_p}%\n'\
-            f'<b>├⌬ 𝐓𝐎𝐓𝐀𝐋→</b> {mem_t}\n'\
-            f'<b>├⌬ 𝐅𝐑𝐄𝐄→</b> {mem_a}\n'\
-            f'<b>├⌬ 𝐔𝐒𝐄𝐃→</b> {mem_u}\n'
+            f'<b>Commit Date:</b> {last_commit}\n\n'\
+            f'<b>Bot Uptime:</b> {currentTime}\n'\
+            f'<b>OS Uptime:</b> {osUptime}\n\n'\
+            f'<b>Total Disk Space:</b> {total}\n'\
+            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
+            f'<b>Upload:</b> {sent}\n'\
+            f'<b>Download:</b> {recv}\n\n'\
+            f'<b>CPU:</b> {cpuUsage}%\n'\
+            f'<b>RAM:</b> {mem_p}%\n'\
+            f'<b>DISK:</b> {disk}%\n\n'\
+            f'<b>Physical Cores:</b> {p_core}\n'\
+            f'<b>Total Cores:</b> {t_core}\n\n'\
+            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
+            f'<b>Memory Total:</b> {mem_t}\n'\
+            f'<b>Memory Free:</b> {mem_a}\n'\
+            f'<b>Memory Used:</b> {mem_u}\n'
             f'<b>╰─ ━━━━━༻❁༺━━━━━━ </b>'
     sendMessage(stats, context.bot, update.message)
 
@@ -71,7 +72,7 @@ def start(update, context):
     buttons.buildbutton("𝐌𝐈𝐑𝐑𝐎𝐑 𝐆𝐑𝐎𝐔𝐏", "https://t.me/KM_MIRROR_STORES")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
-        start_string = f'''𝐇𝐞𝐲 f'\n<a> href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a>' 𝐁𝐫𝐨!
+        start_string = f'''𝐇𝐞𝐲 f'\n<a>href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a>' 𝐁𝐫𝐨!\n
 𝐈 𝐀𝐦 𝐌𝐢𝐫𝐫𝐨𝐫 𝐁𝐨𝐭.𝐈 𝐂𝐚𝐧 𝐌𝐢𝐫𝐫𝐨𝐫 𝐀𝐥𝐥 𝐘𝐨𝐮𝐫 𝐓𝐡𝐢𝐧𝐠𝐬 𝐓𝐨 𝐆𝐃𝐫𝐢𝐯𝐞(𝐒𝐡𝐚𝐫𝐞𝐝 𝐃𝐫𝐢𝐯𝐞)!
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
